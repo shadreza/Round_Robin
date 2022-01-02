@@ -1,5 +1,6 @@
 import math
 
+
 class node:
     def __init__(self, name, arrival, burst):
         self.name = name
@@ -52,7 +53,6 @@ while done_nodes != no_of_prc:
     if (i == next_i) and boss_comming:
         queue.append(front_line_solder)
 
-
     if i == NODES[0].arrival or i == next_i:
 
         front_line_solder = queue.pop(0)
@@ -67,7 +67,8 @@ while done_nodes != no_of_prc:
                     front_line_solder.done = True
                     front_line_solder.ending = next_i
                     front_line_solder.duration = front_line_solder.ending - front_line_solder.arrival
-                    print(serial_counter, ") ", front_line_solder.name, " --- (", i, ",", next_i, ") --- TAA : ", front_line_solder.duration)
+                    print(serial_counter, ") ", front_line_solder.name, " --- (", i, ",", next_i, ") --- TAA : ",
+                          front_line_solder.duration)
                     done_nodes += 1
                     boss_comming = False
                 else:
@@ -80,8 +81,19 @@ while done_nodes != no_of_prc:
                 front_line_solder.done = True
                 front_line_solder.ending = next_i
                 front_line_solder.duration = front_line_solder.ending - front_line_solder.arrival
-                print(serial_counter, ") ", front_line_solder.name, " --- (", i, ",", next_i, ") --- TAA : ", front_line_solder.duration)
+                print(serial_counter, ") ", front_line_solder.name, " --- (", i, ",", next_i, ") --- TAA : ",
+                      front_line_solder.duration)
                 done_nodes += 1
                 boss_comming = False
 
     i += 1
+
+print()
+print()
+
+ATT = 0
+for x in NODES:
+    ATT += x.duration
+ATT = ATT / no_of_prc
+
+print("The Average Time Around Time : ", ATT)
